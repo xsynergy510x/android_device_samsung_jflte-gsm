@@ -22,3 +22,11 @@ DEVICE_PACKAGE_OVERLAYS += device/samsung/jflte-gsm/overlay
 
 # Inherit from jf-common
 $(call inherit-product, device/samsung/jf-common/jf-common.mk)
+
+$(LOCAL_PATH) := device/samsung/jflte-gsm
+
+# Loki
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/releasetools/loki.sh:install/loki/loki.sh \
+    $(LOCAL_PATH)/releasetools/loki_tool:install/loki/loki_tool \
+    $(LOCAL_PATH)/releasetools/loki_bootloaders:install/loki/loki_bootloaders
