@@ -18,12 +18,12 @@
 $(call inherit-product-if-exists, vendor/samsung/jf-gsm-common/jf-gsm-common-vendor.mk)
 
 ## device overlays
-DEVICE_PACKAGE_OVERLAYS += device/samsung/jflte-gsm/overlay
+DEVICE_PACKAGE_OVERLAYS += device/samsung/jfltegsm/overlay
 
 # Inherit from jf-common
 $(call inherit-product, device/samsung/jf-common/jf-common.mk)
 
-$(LOCAL_PATH) := device/samsung/jflte-gsm
+$(LOCAL_PATH) := device/samsung/jfltegsm
 
 # Loki
 PRODUCT_COPY_FILES += \
