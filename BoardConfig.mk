@@ -29,5 +29,10 @@ include device/samsung/jf-common/BoardConfigCommon.mk
 # loki
 TARGET_RELEASETOOLS_EXTENSIONS := device/samsung/jfltegsm/releasetools
 
+# Vendor init
+TARGET_UNIFIED_DEVICE := true
+TARGET_INIT_VENDOR_LIB := libinit_jfltegsm
+TARGET_LIBINIT_DEFINES_FILE := device/samsung/jfltegsm/init/init_jfltegsm.cpp
+
 # Assert
 TARGET_OTA_ASSERT_DEVICE := jfltexx,i9505,GT-I9505,jgedlte,i9505g,GT-I9505G,jfltetmo,jflteatt,jfltecan

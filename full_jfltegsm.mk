@@ -32,4 +32,4 @@ PRODUCT_NAME := full_jfltegsm
 PRODUCT_DEVICE := jfltegsm
 PRODUCT_BRAND := samsung
 PRODUCT_MANUFACTURER := samsung
-PRODUCT_MODEL := GT-I9505
+PRODUCT_MODEL := jfltegsm
