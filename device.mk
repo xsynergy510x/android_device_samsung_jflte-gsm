@@ -25,8 +25,9 @@ $(call inherit-product, device/samsung/jf-common/jf-common.mk)
 
 $(LOCAL_PATH) := device/samsung/jfltegsm
 
-# Loki
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/releasetools/loki.sh:install/loki/loki.sh \
-    $(LOCAL_PATH)/releasetools/loki_tool:install/loki/loki_tool \
-    $(LOCAL_PATH)/releasetools/loki_bootloaders:install/loki/loki_bootloaders
+# loki
+PRODUCT_PACKAGES += \
+    loki_tool \
+    loki.sh \
+    loki_bootloaders \
+    recovery-transform.sh
