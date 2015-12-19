@@ -16,7 +16,7 @@
 #
 #
 # This leverages the loki_patch utility created by djrbliss which allows us
-# to bypass the bootloader checks on jfltecdma and jflteatt
+# to bypass the bootloader checks on jfltevzw and jflteatt
 # See here for more information on loki: https://github.com/djrbliss/loki
 #
 
@@ -30,8 +30,4 @@ def FullOTA_InstallEnd(info):
   info.script.Mount("/system")
   info.script.AppendExtra('package_extract_file("boot.img", "/tmp/boot.img");')
   info.script.AppendExtra('assert(run_program("/sbin/sh", "/tmp/install/bin/loki.sh") == 0);')
-  info.script.AppendExtra('ifelse(is_substring("I545", getprop("ro.bootloader")), run_program("/sbin/sh", "-c", "busybox cp -R /tmp/install/vzw/* /system/"));')
-  info.script.AppendExtra('ifelse(is_substring("I545", getprop("ro.bootloader")), run_program("/sbin/sh", "-c", "busybox sed -i \'s/ro.com.google.clientidbase=android-google/ro.com.google.clientidbase=android-verizon/g\' /system/build.prop"));')
-  info.script.AppendExtra('ifelse(is_substring("L720", getprop("ro.bootloader")), run_program("/sbin/sh", "-c", "busybox cp -R /tmp/install/spr/* /system/"));')
-  info.script.AppendExtra('ifelse(is_substring("R970", getprop("ro.bootloader")), run_program("/sbin/sh", "-c", "busybox cp -R /tmp/install/r970/* /system/"));')
   info.script.Unmount("/system")
