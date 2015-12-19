@@ -33,3 +33,7 @@ PRODUCT_DEVICE := jfltegsm
 PRODUCT_BRAND := samsung
 PRODUCT_MANUFACTURER := samsung
 PRODUCT_MODEL := jfltegsm
+
+# Qualcomm
+PRODUCT_PACKAGES += \
+    libcnefeatureconfig
