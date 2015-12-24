@@ -53,39 +53,36 @@ void vendor_load_properties()
     if (!rc || strncmp(platform, ANDROID_TARGET, PROP_VALUE_MAX))
         return;
 
+   gsm_properties();
+
     property_get("ro.bootloader", bootloader);
 
     if (strstr(bootloader, "I337M")) {
         /* jfltecan */
-        gsm_properties();
         property_set("ro.build.fingerprint", "samsung/jfltevl/jfltecan:4.2.2/JDQ39/I337MVLUAMDJ:user/release-keys");
         property_set("ro.build.description", "jfltevl-user 4.2.2 JDQ39 I337MVLUAMDJ release-keys");
         property_set("ro.product.model", "SGH-I337M");
         property_set("ro.product.device", "jfltecan");
     } else if (strstr(bootloader, "I337")) {
         /* jflteatt */
-        gsm_properties();
         property_set("ro.product.device", "jflteatt");
         property_set("ro.product.model", "SAMSUNG-SGH-I337");
         property_set("ro.build.fingerprint", "samsung/jflteuc/jflteatt:4.4.2/KOT49H/I337UCUFNB1:user/release-keys");
         property_set("ro.build.description", "jflteuc-user 4.4.2 KOT49H I337UCUFNB1 release-keys");
     } else if (strstr(bootloader, "M919")) {
         /* jfltetmo */
-        gsm_properties();
         property_set("ro.build.fingerprint", "samsung/jfltetmo/jfltetmo:4.3/JSS15J/M919UVUEMK2:user/release-keys");
         property_set("ro.build.description", "jfltetmo-user 4.3 JSS15J M919UVUEMK2 release-keys");
         property_set("ro.product.model", "SGH-M919");
         property_set("ro.product.device", "jfltetmo");
     } else if (strstr(bootloader, "I9505G")) {
         /* jgedlte */
-        gsm_properties();
         property_set("ro.build.fingerprint", "samsung/jgedlteue/jgedlte:4.4.3/KTU84L.S003/140503:user/release-keys");
         property_set("ro.build.description", "jgedlteue-user 4.4.3 KTU84L.S003 140503 release-keys");
         property_set("ro.product.model", "GT-I9505G");
         property_set("ro.product.device", "jgedlte");
     } else if (strstr(bootloader, "I9505")) {
         /* jfltexx */
-        gsm_properties();
         property_set("ro.build.fingerprint", "samsung/jfltexx/jflte:4.2.2/JDQ39/I9505XXUAMDE:user/release-keys");
         property_set("ro.build.description", "jfltexx-user 4.2.2 JDQ39 I9505XXUAMDE release-keys");
         property_set("ro.product.model", "GT-I9505");
