@@ -144,13 +144,20 @@ void vendor_load_properties()
         property_set("ro.product.model", "SAMSUNG-SGH-I337");
         property_set("ro.build.fingerprint", "samsung/jflteuc/jflteatt:4.4.2/KOT49H/I337UCUFNB1:user/release-keys");
         property_set("ro.build.description", "jflteuc-user 4.4.2 KOT49H I337UCUFNB1 release-keys");
-    } else if (strstr(bootloader, "M919") || strstr(bootloader, "S975L")) {
-        /* jfltetmo or SM-S975L */
+    } else if (strstr(bootloader, "M919")) {
+        /* jfltetmo */
         gsm_properties();
         property_set("ro.build.fingerprint", "samsung/jfltetmo/jfltetmo:4.3/JSS15J/M919UVUEMK2:user/release-keys");
         property_set("ro.build.description", "jfltetmo-user 4.3 JSS15J M919UVUEMK2 release-keys");
         property_set("ro.product.model", "SGH-M919");
         property_set("ro.product.device", "jfltetmo");
+    } else if (strstr(bootloader, "S975L")) {
+        /* jfltetfnatt */
+        gsm_properties();
+        property_set("ro.build.fingerprint", "samsung/jflteud/jfltetfnatt:4.3/JSS15J/S975LUDUANB1:user/release-keys");
+        property_set("ro.build.description", "jflteud-user 4.3 JSS15J S975LUDUANB1 release-keys");
+        property_set("ro.product.model", "SM-S975L");
+        property_set("ro.product.device", "jfltetfnatt");
     } else if (strstr(bootloader, "I9505G")) {
         /* jgedlte */
         gsm_properties();
