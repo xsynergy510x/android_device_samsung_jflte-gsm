@@ -34,6 +34,19 @@
 #include "log.h"
 #include "util.h"
 
+void cdma_properties(const char* default_network)
+{
+    property_set("DEVICE_PROVISIONED", "1");
+    property_set("persist.eons.enabled", "false");
+    property_set("persist.radio.snapshot_enabled", "1");
+    property_set("persist.radio.snapshot_timer", "22");
+    property_set("rild.libargs", "-d /dev/smd0");
+    property_set("rild.libpath", "/system/lib/libsec-ril.so");
+    property_set("ro.gps.set_privacy", "1");
+    property_set("ro.telephony.default_network", default_network);
+    property_set("telephony.lteOnCdmaDevice", "1");
+}
+
 void gsm_properties()
 {
     property_set("rild.libargs", "-d /dev/smd0");
@@ -53,36 +66,101 @@ void vendor_load_properties()
     if (!rc || strncmp(platform, ANDROID_TARGET, PROP_VALUE_MAX))
         return;
 
-   gsm_properties();
-
     property_get("ro.bootloader", bootloader);
 
-    if (strstr(bootloader, "I337M")) {
+    if (strstr(bootloader, "R970C")) {
+        /* jfltecri */
+        cdma_properties("8");
+	property_set("ril.subscription.types", "NV,RUIM");
+        property_set("ro.build.fingerprint", "samsung/jfltecri/jfltecri:4.2.2/JDQ39/R970CVVUAME4:user/release-keys");
+        property_set("ro.build.description", "jfltecri-user 4.2.2 JDQ39 R970CVVUAME4 release-keys");
+        property_set("ro.config.combined_signal", "true");
+        property_set("ro.gsm.data_retry_config", "infinite,0,0,60000,120000,480000,900000");
+        property_set("ro.product.model", "SCH-R970C");
+        property_set("ro.product.device", "jfltecri");
+        property_set("ro.cdma.home.operator.alpha", "Cricket");
+        property_set("ro.cdma.home.operator.numeric", "310090");
+    } else if (strstr(bootloader, "R970X")) {
+        /* jfltecsp */
+        cdma_properties("8");
+	property_set("ril.subscription.types", "NV,RUIM");
+        property_set("ro.build.fingerprint", "samsung/jfltecsp/jfltecsp:4.2.2/JDQ39/R970XWWUAMFA:user/release-keys");
+        property_set("ro.build.description", "jfltecsp-user 4.2.2 JDQ39 R970XWWUAMFA release-keys");
+	property_set("ro.config.combined_signal", "true");
+        property_set("ro.gsm.data_retry_config", "infinite,0,0,60000,120000,480000,900000");
+        property_set("ro.product.model", "SCH-R970X");
+        property_set("ro.product.device", "jfltecsp");
+    	property_set("ro.cdma.home.operator.alpha", "C Spire");
+	property_set("ro.cdma.home.operator.numeric", "311230");
+    	property_set("telephony.sms.pseudo_multipart", "1");
+    } else if (strstr(bootloader, "R970")) {
+        /* jflteusc */
+        cdma_properties("8");
+	property_set("ril.subscription.types", "NV,RUIM");
+        property_set("ro.build.fingerprint", "samsung/jflteusc/jflteusc:4.2.2/JDQ39/R970VXUAMD9:user/release-keys");
+        property_set("ro.build.description", "jflteusc-user 4.2.2 JDQ39 R970VXUAMD9 release-keys");
+	property_set("ro.config.combined_signal", "true");
+        property_set("ro.gsm.data_retry_config", "infinite,0,0,60000,120000,480000,900000");
+        property_set("ro.product.model", "SCH-R970");
+        property_set("ro.product.device", "jflteusc");
+        property_set("ro.cdma.home.operator.alpha", "U.S.Cellular");
+        property_set("ro.cdma.home.operator.numeric", "311580");
+        property_set("telephony.sms.pseudo_multipart", "1");
+    } else if (strstr(bootloader, "L720")) {
+        /* jfltespr */
+        cdma_properties("8");
+        property_set("ro.build.fingerprint", "samsung/jfltespr/jfltespr:4.2.2/JDQ39/L720VPUAMDL:user/release-keys");
+        property_set("ro.build.description", "jfltespr-user 4.2.2 JDQ39 L720VPUAMDL release-keys");
+        property_set("ro.product.model", "SPH-L720");
+        property_set("ro.product.device", "jfltespr");
+	property_set("ro.cdma.home.operator.alpha", "Sprint");
+        property_set("ro.cdma.home.operator.numeric", "310120");
+    	property_set("ro.telephony.default_cdma_sub", "1");
+        property_set("ro.telephony.get_imsi_from_sim", "true");
+        property_set("telephony.sms.pseudo_multipart", "1");
+    } else if (strstr(bootloader, "I545")) {
+        /* jfltevzw */
+        cdma_properties("10");
+        property_set("ro.build.fingerprint", "Verizon/jfltevzw/jfltevzw:4.3/JSS15J/I545VRUEMK2:user/release-keys");
+        property_set("ro.build.description", "jfltevzw-user 4.3 JSS15J I545VRUEMK2 release-keys");
+	property_set("ro.config.combined_signal", "true");
+	property_set("ro.config.multimode_cdma", "1");
+        property_set("ro.gsm.data_retry_config", "infinite,5000,5000,60000,120000,480000,900000");
+        property_set("ro.product.model", "SCH-I545");
+        property_set("ro.product.device", "jfltevzw");
+        property_set("ro.telephony.get_imsi_from_sim", "true");
+    	property_set("ro.telephony.default_cdma_sub", "0");
+    } else if (strstr(bootloader, "I337M")) {
         /* jfltecan */
+        gsm_properties();
         property_set("ro.build.fingerprint", "samsung/jfltevl/jfltecan:4.2.2/JDQ39/I337MVLUAMDJ:user/release-keys");
         property_set("ro.build.description", "jfltevl-user 4.2.2 JDQ39 I337MVLUAMDJ release-keys");
         property_set("ro.product.model", "SGH-I337M");
         property_set("ro.product.device", "jfltecan");
     } else if (strstr(bootloader, "I337")) {
         /* jflteatt */
+        gsm_properties();
         property_set("ro.product.device", "jflteatt");
         property_set("ro.product.model", "SAMSUNG-SGH-I337");
         property_set("ro.build.fingerprint", "samsung/jflteuc/jflteatt:4.4.2/KOT49H/I337UCUFNB1:user/release-keys");
         property_set("ro.build.description", "jflteuc-user 4.4.2 KOT49H I337UCUFNB1 release-keys");
-    } else if (strstr(bootloader, "M919")) {
-        /* jfltetmo */
+    } else if (strstr(bootloader, "M919") || strstr(bootloader, "S975L")) {
+        /* jfltetmo or SM-S975L */
+        gsm_properties();
         property_set("ro.build.fingerprint", "samsung/jfltetmo/jfltetmo:4.3/JSS15J/M919UVUEMK2:user/release-keys");
         property_set("ro.build.description", "jfltetmo-user 4.3 JSS15J M919UVUEMK2 release-keys");
         property_set("ro.product.model", "SGH-M919");
         property_set("ro.product.device", "jfltetmo");
     } else if (strstr(bootloader, "I9505G")) {
         /* jgedlte */
+        gsm_properties();
         property_set("ro.build.fingerprint", "samsung/jgedlteue/jgedlte:4.4.3/KTU84L.S003/140503:user/release-keys");
         property_set("ro.build.description", "jgedlteue-user 4.4.3 KTU84L.S003 140503 release-keys");
         property_set("ro.product.model", "GT-I9505G");
         property_set("ro.product.device", "jgedlte");
     } else if (strstr(bootloader, "I9505")) {
         /* jfltexx */
+        gsm_properties();
         property_set("ro.build.fingerprint", "samsung/jfltexx/jflte:4.2.2/JDQ39/I9505XXUAMDE:user/release-keys");
         property_set("ro.build.description", "jfltexx-user 4.2.2 JDQ39 I9505XXUAMDE release-keys");
         property_set("ro.product.model", "GT-I9505");
