@@ -158,6 +158,13 @@ void vendor_load_properties()
         property_set("ro.build.description", "jflteud-user 4.3 JSS15J S975LUDUANB1 release-keys");
         property_set("ro.product.model", "SM-S975L");
         property_set("ro.product.device", "jfltetfnatt");
+    } else if (strstr(bootloader, "S970")) {
+	/* jfltetfntmo */
+	gsm_properties();
+        property_set("ro.build.fingerprint", "samsung/jfltetfntmo/jfltetfntmo:4.2.2/JDQ39/S970GUDUAMH3:user/release-keys");
+        property_set("ro.build.description", "jfltetfntmo-user 4.2.2 JDQ39 S970GUDUAMH3 release-keys");
+        property_set("ro.product.model", "SGH-S970G");
+        property_set("ro.product.device", "jfltetfntmo");
     } else if (strstr(bootloader, "I9505G")) {
         /* jgedlte */
         gsm_properties();
