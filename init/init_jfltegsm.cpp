@@ -137,6 +137,15 @@ void vendor_load_properties()
         property_set("ro.build.description", "jfltevl-user 4.2.2 JDQ39 I337MVLUAMDJ release-keys");
         property_set("ro.product.model", "SGH-I337M");
         property_set("ro.product.device", "jfltecan");
+    } else if (strstr(bootloader, "I337Z")) {
+        /* jflteaio */
+        gsm_properties();
+        property_set("DEVICE_PROVISIONED", "1");
+	property_set("ril.subscription.types", "NV,RUIM");
+        property_set("ro.build.fingerprint", "samsung/jflteaio/jflteaio:4.4.2/KOT49H/I337ZTUUBOA3:user/release-keys");
+        property_set("ro.build.description", "jflteaio-user 4.4.2 KOT49H I337ZTUUBOA3 release-keys");
+        property_set("ro.product.model", "SGH-I337Z");
+        property_set("ro.product.device", "jflteaio");
     } else if (strstr(bootloader, "I337")) {
         /* jflteatt */
         gsm_properties();
