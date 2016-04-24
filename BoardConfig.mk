@@ -35,4 +35,4 @@ TARGET_INIT_VENDOR_LIB := libinit_jfltegsm
 TARGET_LIBINIT_DEFINES_FILE := device/samsung/jfltegsm/init/init_jfltegsm.cpp
 
 # Assert
-TARGET_OTA_ASSERT_DEVICE := jfltexx,i9505,GT-I9505,jgedlte,i9505g,GT-I9505G,jfltetmo,jflteatt,jfltecan,jfltetfnatt,jfltetfntmo,jfltecri,jfltespr,jflteusc,jfltecri,jfltecsp,jfltevzw
+TARGET_OTA_ASSERT_DEVICE := jfltexx,i9505,GT-I9505,jgedlte,i9505g,GT-I9505G,jfltetmo,jflteatt,jfltecan,jfltetfnatt,jfltetfntmo,jfltecri,jfltespr,jflteusc,jfltecri,jfltecsp,jfltevzw,jflteaio
